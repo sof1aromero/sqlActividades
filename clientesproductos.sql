@@ -135,7 +135,8 @@ insert into municipio (id_mun, nombre, id_depto) values
 (271, 'Inírida', 94), (272, 'Barrancominas', 94), (273, 'Mapiripana', 94), (274, 'San Felipe', 94), (275, 'Puerto Colombia', 94), (276, 'La Guadalupe', 94), (277, 'Cacahual', 94), (278, 'Pana Pana', 94), (279, 'Morichal', 94),
 (280, 'San José del Guaviare', 95), (281, 'Calamar', 95), (282, 'El Retorno', 95), (283, 'Miraflores', 95),
 (284, 'Mitú', 97), (285, 'Carurú', 97), (286, 'Pacoa', 97), (287, 'Taraira', 97), (288, 'Papunahua', 97), (289, 'Yavaraté', 97),
-(290, 'Puerto Carreño', 99), (291, 'La Primavera', 99), (292, 'Santa Rosalía', 99), (293, 'Cumaribo', 99);
+(290, 'Puerto Carreño', 99), (291, 'La Primavera', 99), (292, 'Santa Rosalía', 99), (293, 'Cumaribo', 99), (294, 'Fusagasugá', 25), (295, 'Girardot', 25), (296, 'Soacha', 25), (297, 'Zipaquirá', 25), (298, 'Facatativá', 25), (299, 'Chía', 25),
+(300, 'Madrid', 25), (301, 'Funza', 25), (302, 'Cajicá', 25), (303, 'Mosquera', 25);
 
 
 insert into cliente (id_tdoc, id, nombre, apellido, correo, contacto, id_genero, id_depto, id_mun, fechaNac) values
@@ -145,18 +146,22 @@ insert into cliente (id_tdoc, id, nombre, apellido, correo, contacto, id_genero,
 (1, 10201, 'diana', 'arenas', 'diana.arenas@gmail.com', '3201112233', 2, 5, 5, '1992-08-12'),
 (1, 10202, 'diana', 'arenas', 'diana.sabaneta@gmail.com', '3201112233', 2, 5, 8, '1992-08-12'),
 (1, 10301, 'andres', 'gomez', 'andres.gomez@gmail.com', '3114445566', 1, 5, 3, '1990-01-30'),
-
+(1, 10501, 'mariana', 'pajon', 'mariana.pajon@antioquia.com', '3109998877', 2, 5, 1, '1991-10-10'),
+(1, 10502, 'carolina', 'alzate', 'caro.alzate@gmail.com', '3004445522', 2, 5, 1, '1994-02-28'),
+(1, 10503, 'lina', 'moreno', 'lina.m@gmail.com', '3117774433', 2, 5, 5, '1988-12-05'),
+(1, 10504, 'sandra', 'valencia', 'sandra.v@gmail.com', '3205551122', 2, 5, 1, '1982-07-14'),
+(1, 10505, 'paula', 'betancur', 'paula.b@gmail.com', '3158889900', 2, 5, 1, '1996-04-03'),
+(1, 10506, 'veronica', 'ossa', 'vero.ossa@gmail.com', '3182223311', 2, 5, 8, '1990-11-22'),
+(1, 10507, 'isabel', 'gallego', 'isa.gallego@gmail.com', '3176665544', 2, 5, 1, '1993-01-19'),
 
 (2, 11001, 'elena', 'schmidt', 'elena.schmidt@gmail.com', '3004445566', 2, 11, 21, '1995-12-05'),
 (1, 11002, 'mauricio', 'rojas', 'mauro.rojas@gmail.com', '3157778899', 1, 11, 21, '1988-03-14'),
 (1, 11003, 'claudia', 'mendez', 'claudia.mendez@gmail.com', '3182223344', 2, 11, 21, '1993-07-22'),
 
-
 (1, 15001, 'sofia', 'lopez', 'sofia.lopez@gmail.com', '3187778899', 2, 15, 32, '1990-09-10'),
 (1, 15002, 'valeria', 'rios', 'valeria.rios@gmail.com', '3123334455', 2, 15, 32, '1993-04-18'),
 (1, 15003, 'fernando', 'pardo', 'fer.pardo@gmail.com', '3171234567', 1, 15, 34, '1982-11-25'),
 (1, 15004, 'angela', 'castro', 'angela.castro@gmail.com', '3190001122', 2, 15, 32, '1994-06-02'),
-
 
 (1, 76001, 'lucia', 'vargas', 'lucia.vargas@gmail.com', '3104443322', 2, 76, 222, '1998-10-31'),
 (1, 76002, 'ricardo', 'calero', 'ricardo.calero@gmail.com', '3146667788', 1, 76, 222, '1987-02-15'),
@@ -178,4 +183,44 @@ insert into cliente (id_tdoc, id, nombre, apellido, correo, contacto, id_genero,
 (1, 88001, 'paola', 'rojas', 'paola.rojas@gmail.com', '3157778811', 2, 88, 259, '1990-05-30'),
 (1, 91001, 'oscar', 'ruiz', 'oscar.ruiz@gmail.com', '3182223344', 1, 91, 261, '1986-10-14'),
 (1, 99001, 'valentina', 'cruz', 'vale.cruz@gmail.com', '3114445566', 2, 99, 290, '1997-04-25'),
-(1, 23001, 'camila', 'suarez', 'camila.suarez@gmail.com', '3019990011', 2, 23, 82, '1996-02-12');
+(1, 23001, 'camila', 'suarez', 'camila.suarez@gmail.com', '3019990011', 2, 23, 82, '1996-02-12'),
+
+(1, 25001, 'andres', 'perez', 'andres.perez@gmail.com', '3102223344', 1, 25, 94, '1990-03-15'),
+(1, 25002, 'lorena', 'duque', 'lore.duque@gmail.com', '3114445566', 2, 25, 97, '1994-11-20'),
+(1, 25003, 'cristian', 'rojas', 'cris.rojas@gmail.com', '3157778899', 1, 25, 95, '1987-06-05'),
+(1, 25004, 'tatiana', 'mejia', 'tati.mejia@gmail.com', '3208889900', 2, 25, 96, '1992-01-30'),
+
+(1, 11004, 'nicolas', 'garzon', 'nico.garzon@gmail.com', '3104445566', 1, 11, 21, '1998-11-12'),
+(1, 11005, 'alejandra', 'torres', 'aleja.t@gmail.com', '3125556677', 2, 11, 21, '1990-04-05'),
+(1, 11006, 'roberto', 'gomez', 'roberto.g@gmail.com', '3001112233', 1, 11, 21, '1975-08-22'),
+
+
+(1, 13002, 'paula', 'herrera', 'paula.cartagena@gmail.com', '3158889900', 2, 13, 22, '1993-12-01'),
+(1, 13003, 'andres', 'villamizar', 'andres.v@gmail.com', '3117774455', 1, 13, 22, '1987-05-18'),
+
+
+(1, 41002, 'mario', 'ortiz', 'mario.neiva@gmail.com', '3189990011', 1, 41, 112, '1982-03-30'),
+(1, 41003, 'clara', 'luna', 'clara.luna@gmail.com', '3142223344', 2, 41, 112, '1996-07-14'),
+
+
+(1, 19001, 'esteban', 'rios', 'esteban.popayan@gmail.com', '3218887766', 1, 19, 62, '1991-09-20'),
+(1, 19002, 'monica', 'valencia', 'monica.v@gmail.com', '3134445566', 2, 19, 71, '1984-01-10'),
+
+
+(1, 10701, 'gabriel', 'zapata', 'gabo.z@gmail.com', '3109998877', 1, 5, 2, '1980-02-14'),
+(1, 10702, 'liliana', 'suarez', 'lili.s@gmail.com', '3007776655', 2, 5, 7, '1995-11-25'),
+
+
+(1, 68004, 'fabio', 'duarte', 'fabio.d@gmail.com', '3195554433', 1, 68, 192, '1988-06-08'),
+(1, 68005, 'juliana', 'mendez', 'juli.mendez@gmail.com', '3174443322', 2, 68, 192, '1992-10-15'),
+
+(1, 76004, 'oscar', 'munoz', 'oscar.cali@gmail.com', '3126665544', 1, 76, 222, '1979-04-12'),
+(1, 76005, 'daniela', 'vargas', 'dani.v@gmail.com', '3103332211', 2, 76, 222, '1997-02-28'),
+
+
+(1, 25005, 'sergio', 'penagos', 'sergio.p@gmail.com', '3112229988', 1, 25, 94, '1986-07-07'),
+(1, 25006, 'adriana', 'rozo', 'adri.rozo@gmail.com', '3145558877', 2, 25, 94, '1991-03-19'),
+
+(2, 20001, 'hans', 'muller', 'hans.extranjero@gmail.com', '3009998877', 1, 11, 21, '1983-11-30'), 
+(3, 30001, 'kevin', 'niño', 'kevin.ti@gmail.com', '3201112233', 1, 5, 1, '2009-10-05'), 
+(1, 40001, 'patricia', 'lopez', 'paty.lopez@gmail.com', '3187776655', 2, 8, 11, '1968-12-24'); 
