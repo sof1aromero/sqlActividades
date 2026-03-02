@@ -224,3 +224,34 @@ insert into cliente (id_tdoc, id, nombre, apellido, correo, contacto, id_genero,
 (2, 20001, 'hans', 'muller', 'hans.extranjero@gmail.com', '3009998877', 1, 11, 21, '1983-11-30'), 
 (3, 30001, 'kevin', 'niño', 'kevin.ti@gmail.com', '3201112233', 1, 5, 1, '2009-10-05'), 
 (1, 40001, 'patricia', 'lopez', 'paty.lopez@gmail.com', '3187776655', 2, 8, 11, '1968-12-24'); 
+
+insert into producto (id_prod, nombre, categoria, precio, stock) values
+(1, 'Laptop Gamer Nitro', 'Tecnología', 3500000.00, 15),
+(2, 'Smartphone Galaxy S23', 'Tecnología', 2800000.00, 20),
+(3, 'Monitor 27 Pulgadas 4K', 'Tecnología', 1200000.00, 10),
+(4, 'Silla Ergonómica Pro', 'Hogar', 850000.00, 12),
+(5, 'Teclado Mecánico RGB', 'Tecnología', 250000.00, 30),
+(6, 'Mouse Inalámbrico', 'Tecnología', 120000.00, 50),
+(7, 'Audífonos Noise Cancelling', 'Tecnología', 600000.00, 15),
+(8, 'Escritorio en L Madera', 'Hogar', 450000.00, 8),
+(9, 'Impresora Multifuncional', 'Tecnología', 750000.00, 5),
+(10, 'Cámara Web 1080p', 'Tecnología', 180000.00, 25);
+
+insert into factura (id_factura, fecha_factura, id_cliente, metodo_pago) values
+(1, '2024-01-10 10:30:00', 10101, 'Tarjeta de Crédito'),
+(2, '2024-01-12 15:45:00', 11001, 'Efectivo'),
+(3, '2024-01-15 09:20:00', 10201, 'Transferencia'),
+(4, '2024-01-20 18:10:00', 15001, 'Tarjeta de Débito'),
+(5, '2024-02-01 11:00:00', 76001, 'Transferencia'),
+(6, '2024-02-05 14:30:00', 10501, 'Tarjeta de Crédito'),
+(7, '2024-02-10 16:20:00', 11004, 'Efectivo');
+
+insert into compra (id_factura, id_prod, cantidad, precio_unitario) values 
+(1, 1, 1, 3500000.00),  
+(1, 6, 1, 120000.00),   
+(2, 2, 1, 2800000.00),  
+(3, 4, 2, 850000.00),   
+(4, 7, 1, 600000.00),   
+(5, 3, 1, 1200000.00),  
+(6, 10, 1, 180000.00),  
+(7, 5, 2, 250000.00);
