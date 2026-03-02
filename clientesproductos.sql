@@ -8,6 +8,26 @@ create table departamento (
     nombre varchar(50) not null
 );
 
+create table tipo_documento (
+    id_tdoc int primary key auto_increment,
+    sigla varchar(10) not null unique,
+    nombreDoc varchar(50) not null
+);
+
+create table genero (
+    id_genero int primary key auto_increment,
+    nombreGen varchar(50) not null unique
+);
+
+create table producto (
+    id_prod int primary key auto_increment,
+    nombre varchar(100) not null,
+    categoria varchar(50),
+    precio decimal(12, 2) not null,
+    stock int default 0
+);
+
+
 create table municipio (
     id_mun int primary key, 
     nombre varchar(50) not null,
@@ -16,20 +36,60 @@ create table municipio (
         foreign key (id_depto) references departamento(id_depto)
 );
 
+
 create table cliente (
-    tipodoc varchar(50),
-    id bigint primary key,
+    id_tdoc int,
+    id int primary key,
     nombre varchar(50),
     apellido varchar(50),
     correo varchar(50) unique,
     contacto varchar(50),
-    genero varchar(50),
+    id_genero int,
     id_depto int, 
     id_mun int,
-    fecha datetime,
-    constraint fk_mun_cliente
-        foreign key (id_mun) references municipio(id_mun)
+    fechaNac datetime,
+    constraint fk_tdoc_cliente 
+        foreign key (id_tdoc) references tipo_documento(id_tdoc),
+    constraint fk_genero_cliente 
+        foreign key (id_genero) references genero(id_genero),
+    constraint fk_mun_cliente 
+        foreign key (id_mun) references municipio(id_mun),
+    constraint fk_depto_cliente
+        foreign key (id_depto) references departamento(id_depto)
 );
+
+
+create table factura (
+    id_factura int primary key auto_increment,
+    fecha_factura datetime default current_timestamp,
+    id_cliente int,
+    metodo_pago varchar(50),
+    constraint fk_cliente_factura 
+        foreign key (id_cliente) references cliente(id)
+);
+
+create table compra (
+    id_compra int primary key auto_increment,
+    id_factura int,
+    id_prod int,
+    cantidad int not null,
+    precio_unitario decimal(12,2),
+    constraint fk_factura_compra 
+        foreign key (id_factura) references factura(id_factura),
+    constraint fk_producto_compra 
+        foreign key (id_prod) references producto(id_prod)
+);
+
+insert into tipo_documento (sigla, nombreDoc) values
+('cc', 'cédula de ciudadanía'),
+('ce', 'cédula de extranjería'),
+('ti', 'tarjeta de identidad');
+
+insert into genero (nombreGen) values 
+('masculino'), 
+('femenino'), 
+('no binario'), 
+('otro');
 
 
 insert into departamento (id_depto, nombre) values
@@ -78,24 +138,44 @@ insert into municipio (id_mun, nombre, id_depto) values
 (290, 'Puerto Carreño', 99), (291, 'La Primavera', 99), (292, 'Santa Rosalía', 99), (293, 'Cumaribo', 99);
 
 
-insert into cliente (tipodoc, id, nombre, apellido, correo, contacto, genero, id_depto, id_mun, fecha) values
-('CC', 1010203040, 'Carlos', 'Restrepo', 'carlos.res@mail.com', '3105556677', 'Masculino', 5, 1, '1985-03-15'),
-('CC', 1020304050, 'Diana', 'Arenas', 'diana.a@mail.com', '3201112233', 'Femenino', 5, 5, '1992-07-22'),
-('CC', 1030405060, 'Juan', 'Montoya', 'juan.mon@mail.com', '3159998877', 'Masculino', 8, 11, '1988-11-02'),
-('CE', 2030405060, 'Elena', 'Schmidt', 'elena.s@mail.com', '3004445566', 'Femenino', 11, 21, '1995-01-30'),
-('TI', 1050607080, 'Mateo', 'García', 'mateo.g@mail.com', '3112223344', 'Masculino', 13, 22, '2008-05-14'),
-('CC', 1060708090, 'Sofía', 'López', 'sofia.l@mail.com', '3187778899', 'Femenino', 15, 32, '1990-09-10'),
-('CC', 1070809001, 'Andrés', 'Pardo', 'andres.p@mail.com', '3171234567', 'Masculino', 15, 34, '1982-12-25'),
-('CC', 1080901020, 'Valeria', 'Ríos', 'valeria.r@mail.com', '3123334455', 'Femenino', 17, 42, '1993-04-18'),
-('CC', 1090102030, 'Ricardo', 'Díaz', 'ricardo.d@mail.com', '3146667788', 'Masculino', 19, 62, '1987-08-05'),
-('CC', 1100102030, 'Camila', 'Suárez', 'camila.s@mail.com', '3019990011', 'Femenino', 23, 82, '1996-02-12'),
-('CC', 1110203040, 'Luis', 'Henao', 'luis.h@mail.com', '3168889900', 'Masculino', 25, 94, '1980-06-28'),
-('CC', 1120304050, 'Isabella', 'Torres', 'isa.t@mail.com', '3217776655', 'Femenino', 41, 112, '1991-10-03'),
-('CC', 1130405060, 'Felipe', 'Mendoza', 'felipe.m@mail.com', '3135554433', 'Masculino', 44, 122, '1989-11-20'),
-('CC', 1140506070, 'Gabriela', 'Ortiz', 'gabi.o@mail.com', '3001239876', 'Femenino', 52, 152, '1994-03-08'),
-('CC', 1150607080, 'Jorge', 'Castro', 'jorge.c@mail.com', '3190001122', 'Masculino', 68, 192, '1984-07-15'),
-('CC', 1160708090, 'Lucía', 'Vargas', 'lucia.v@mail.com', '3104443322', 'Femenino', 76, 222, '1998-12-01'),
-('CC', 1170809000, 'Santiago', 'Peña', 'santi.p@mail.com', '3206665544', 'Masculino', 81, 232, '1983-09-22'),
-('CC', 1180901010, 'Paola', 'Rojas', 'paola.r@mail.com', '3157778811', 'Femenino', 88, 259, '1990-05-30'),
-('CC', 1190102020, 'Óscar', 'Ruiz', 'oscar.r@mail.com', '3182223344', 'Masculino', 91, 261, '1986-10-14'),
-('CC', 1200203040, 'Valentina', 'Cruz', 'vale.c@mail.com', '3114445566', 'Femenino', 99, 290, '1997-04-25');
+insert into cliente (id_tdoc, id, nombre, apellido, correo, contacto, id_genero, id_depto, id_mun, fechaNac) values
+
+(1, 10101, 'carlos', 'restrepo', 'carlos.restrepo@gmail.com', '3105556677', 1, 5, 1, '1985-05-20'),
+(1, 10102, 'carlos', 'restrepo', 'carlos.envigado@gmail.com', '3105556677', 1, 5, 5, '1985-05-20'),
+(1, 10201, 'diana', 'arenas', 'diana.arenas@gmail.com', '3201112233', 2, 5, 5, '1992-08-12'),
+(1, 10202, 'diana', 'arenas', 'diana.sabaneta@gmail.com', '3201112233', 2, 5, 8, '1992-08-12'),
+(1, 10301, 'andres', 'gomez', 'andres.gomez@gmail.com', '3114445566', 1, 5, 3, '1990-01-30'),
+
+
+(2, 11001, 'elena', 'schmidt', 'elena.schmidt@gmail.com', '3004445566', 2, 11, 21, '1995-12-05'),
+(1, 11002, 'mauricio', 'rojas', 'mauro.rojas@gmail.com', '3157778899', 1, 11, 21, '1988-03-14'),
+(1, 11003, 'claudia', 'mendez', 'claudia.mendez@gmail.com', '3182223344', 2, 11, 21, '1993-07-22'),
+
+
+(1, 15001, 'sofia', 'lopez', 'sofia.lopez@gmail.com', '3187778899', 2, 15, 32, '1990-09-10'),
+(1, 15002, 'valeria', 'rios', 'valeria.rios@gmail.com', '3123334455', 2, 15, 32, '1993-04-18'),
+(1, 15003, 'fernando', 'pardo', 'fer.pardo@gmail.com', '3171234567', 1, 15, 34, '1982-11-25'),
+(1, 15004, 'angela', 'castro', 'angela.castro@gmail.com', '3190001122', 2, 15, 32, '1994-06-02'),
+
+
+(1, 76001, 'lucia', 'vargas', 'lucia.vargas@gmail.com', '3104443322', 2, 76, 222, '1998-10-31'),
+(1, 76002, 'ricardo', 'calero', 'ricardo.calero@gmail.com', '3146667788', 1, 76, 222, '1987-02-15'),
+(1, 76003, 'beatriz', 'pinzon', 'betty.pinzon@gmail.com', '3001239876', 2, 76, 227, '1991-12-24'),
+
+(1, 08001, 'juan', 'montoya', 'juan.montoya@gmail.com', '3159998877', 1, 8, 11, '1989-04-04'),
+(1, 08002, 'pedro', 'herrera', 'pedro.herrera@gmail.com', '3168889900', 1, 8, 16, '1984-09-19'),
+(1, 08003, 'marta', 'solano', 'marta.solano@gmail.com', '3125554433', 2, 8, 11, '1992-01-11'),
+
+(1, 68001, 'jorge', 'castro', 'jorge.castro@gmail.com', '3190001122', 1, 68, 192, '1983-07-15'),
+(1, 68002, 'silvia', 'duarte', 'silvia.duarte@gmail.com', '3101112222', 2, 68, 192, '1996-05-28'),
+(1, 68003, 'jorge', 'castro', 'jorge.florida@gmail.com', '3190001122', 1, 68, 194, '1983-07-15'),
+
+(1, 41001, 'isabella', 'torres', 'isa.torres@gmail.com', '3217776655', 2, 41, 112, '1994-10-03'),
+(3, 13001, 'mateo', 'garcia', 'mateo.garcia@gmail.com', '3112223344', 1, 13, 22, '2008-05-14'),
+(1, 44001, 'felipe', 'mendoza', 'felipe.mendoza@gmail.com', '3135554433', 1, 44, 122, '1989-11-20'),
+(1, 52001, 'gabriela', 'ortiz', 'gabi.ortiz@gmail.com', '3001239876', 2, 52, 152, '1994-03-08'),
+(1, 81001, 'santiago', 'peña', 'santi.pena@gmail.com', '3206665544', 1, 81, 232, '1983-09-22'),
+(1, 88001, 'paola', 'rojas', 'paola.rojas@gmail.com', '3157778811', 2, 88, 259, '1990-05-30'),
+(1, 91001, 'oscar', 'ruiz', 'oscar.ruiz@gmail.com', '3182223344', 1, 91, 261, '1986-10-14'),
+(1, 99001, 'valentina', 'cruz', 'vale.cruz@gmail.com', '3114445566', 2, 99, 290, '1997-04-25'),
+(1, 23001, 'camila', 'suarez', 'camila.suarez@gmail.com', '3019990011', 2, 23, 82, '1996-02-12');
